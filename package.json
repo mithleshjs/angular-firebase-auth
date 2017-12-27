@@ -1,6 +1,6 @@
 {
   "name": "angular-firebase-auth",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -21,7 +21,14 @@
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
+    "@ngx-progressbar/core": "^3.0.2",
+    "@ngx-progressbar/http": "^3.0.2",
+    "@ngx-progressbar/router": "^3.0.2",
+    "@ultimate/ngxerrors": "^1.4.0",
+    "angularfire2": "^5.0.0-rc.4",
     "core-js": "^2.4.1",
+    "firebase": "^4.8.0",
+    "ngx-bootstrap": "^2.0.0-rc.0",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },

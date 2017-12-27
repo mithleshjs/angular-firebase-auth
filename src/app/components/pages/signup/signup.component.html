@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <alert *ngIf="!!signUpError" type="danger" [dismissible]="true">
+                <strong>{{signUpError.code | uppercase}}: </strong> {{signUpError.message}}
+            </alert>
+            <div class="panel panel-primary">
+                <div class="panel-heading">Register</div>
+
+                <div class="panel-body">
+                    <form [formGroup]="signUpForm" (ngSubmit)="signUp()" class="form-horizontal" >
+
+                      <div class="form-group" [class.has-error]="nameErrors.hasError('*', ['touched', 'dirty'])">
+                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <div class="col-md-6">
+                                <input id="name" type="text" formControlName="displayName" class="form-control" name="name">
+                                <span class="help-block" ngxErrors="displayName" #nameErrors="ngxErrors">
+                                  <strong *ngFor="let error of validationErrors.displayName"
+                                          [ngxError]="error.name"
+                                          [when]="error.rules">
+                                          {{error.text}}
+                                  </strong>
+                                </span>
+                            </div>
+                      </div>
+
+                      <div class="form-group" [class.has-error]="emailErrors.hasError('*', ['touched', 'dirty'])">
+                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <div class="col-md-6">
+                                <input id="email" type="email" formControlName="email" class="form-control" name="email">
+                                <span class="help-block" ngxErrors="email" #emailErrors="ngxErrors">
+                                  <strong *ngFor="let error of validationErrors.email"
+                                          [ngxError]="error.name"
+                                          [when]="error.rules">
+                                          {{error.text}}
+                                  </strong>
+                                </span>
+                            </div>
+                      </div>
+
+                      <div class="form-group" [class.has-error]="passwordErrors.hasError('*', ['touched', 'dirty'])">
+                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <div class="col-md-6">
+                                <input id="password" type="password" formControlName="password" class="form-control" name="password" required>
+                                <span class="help-block" ngxErrors="password" #passwordErrors="ngxErrors">
+                                  <strong *ngFor="let error of validationErrors.password"
+                                          [ngxError]="error.name"
+                                          [when]="error.rules">
+                                          {{error.text}}
+                                  </strong>
+                                </span>
+                            </div>
+                      </div>
+
+                      <div class="form-group" [class.has-error]="passwordConfirmErrors.hasError('*', ['touched', 'dirty'])">
+                            <label for="password" class="col-md-4 control-label">Confirm Password</label>
+                            <div class="col-md-6">
+                                <input id="passwordConfirm" type="password" formControlName="passwordConfirm" class="form-control" name="passwordConfirm" required>
+                                <span class="help-block" ngxErrors="passwordConfirm" #passwordConfirmErrors="ngxErrors">
+                                <strong *ngFor="let error of validationErrors.passwordConfirm"
+                                      [ngxError]="error.name"
+                                      [when]="error.rules">
+                                      {{error.text}}
+                                </strong>
+                              </span>
+                            </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" class="btn btn-block btn-primary" [disabled]="signUpForm.invalid || isSigningUp">
+                              {{ isSigningUp ? 'Signing up...' : 'Sign Up' }}
+                            </button>
+                        </div>
+                      </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

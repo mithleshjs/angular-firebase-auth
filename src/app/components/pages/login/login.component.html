@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <alert *ngIf="!!authError" type="danger" [dismissible]="true">
+              <strong>{{authError.code | uppercase}}: </strong> {{authError.message}}
+            </alert>
+            <div class="panel panel-primary">
+                <div class="panel-heading">Login</div>
+
+                <div class="panel-body">
+                    <form [formGroup]="signInForm" (ngSubmit)="signIn()" class="form-horizontal">
+
+                      <div class="form-group" [class.has-error]="emailError.hasError('*', ['touched', 'dirty'])">
+                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <div class="col-md-6">
+                                <input id="email" formControlName="email" required type="email" class="form-control" name="email">
+                                <span class="help-block" ngxErrors="email" #emailError="ngxErrors">
+                                  <strong ngxError="email" [when]="['dirty', 'touched']">
+                                         Please enter a valid email id
+                                  </strong>
+                                </span>
+                            </div>
+                      </div>
+
+                      <div class="form-group">
+                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <div class="col-md-6">
+                                <input id="password" formControlName="password" required type="password" class="form-control" name="password">
+                            </div>
+                      </div>
+
+                      <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-block btn-primary" [disabled]="signInForm.invalid || isSigningIn">
+                                  {{ isSigningIn ? 'Signing in...' : 'Sign In' }}
+                                </button>
+                            </div>
+                      </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,27 +1,50 @@
-# AngularFirebaseAuth
+# Angular + Firebase Authentication Boilerplate
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.2.
+A basic Angular (v5.1) web app with a fully working authentication system powered by Firebase. You can use this project to learn how to properly integrate Firebase authentication in Angular or you can use it as a base for your future projects to save time.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Login and Signup Pages
+- Proper Form Validations
+- Proper Firebase Auth Errors Handling
+- Custom Validator for Password Confirmation
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Create an account at https://firebase.google.com/
 
-## Build
+- `git clone https://github.com/mithleshjs/angular-firebase-auth.git angular-firebase-auth`
+- `cd angular-firebase-auth`
+- `npm install`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Enable Email/Password sign-in:
 
-## Running unit tests
+- In the Firebase [console](https://console.firebase.google.com/), open the Auth section.
+- On the Sign in method tab, enable the Email/password sign-in method and click Save.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Open `/src/environments/environment.ts` and add your Firebase configuration:
 
-## Running end-to-end tests
+```ts
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: '<your-key>',
+    authDomain: '<your-project-authdomain>',
+    databaseURL: '<your-database-URL>',
+    projectId: '<your-project-id>',
+    storageBucket: '<your-storage-bucket>',
+    messagingSenderId: '<your-messaging-sender-id>'
+  }
+};
+```
+And finally `ng serve`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Third Party Libraries
+There are several third-party libraries used inside this project to make things simpler, of which you can read further to understand about their implementation:
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- [UltimateAngular/ngx-errors
+](https://github.com/UltimateAngular/ngx-errors) -  makes validation easier
+- [valor-software/ngx-bootstrap
+](https://github.com/valor-software/ngx-bootstrap) - bootstrap for Angular
+- [MurhafSousli/ngx-progressbar
+](https://github.com/MurhafSousli/ngx-progressbar) - to show loading bar at the top
